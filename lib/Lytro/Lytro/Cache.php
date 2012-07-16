@@ -56,9 +56,9 @@ class Cache
         $vendorContent = $this->cache['meta']['picture']['accelerationArray'][0]['vendorContent'];
 
         $cache = array();
-        $cache['generator'] = 'php-nytro';
+        $cache['generator'] = 'php-lytro';
         $cache['date'] = date('r');
-        $cache['camera'] = 'Nytro (http://nytro.com)';
+        $cache['camera'] = 'Lytro (http://lytro.com)';
         $cache['version'] = $this->cache['meta']['version'];
         $cache['lookup'] = $this->cache['lookup'];
         $cache['dimensions'] = $vendorContent['displayParameters']['displayDimensions']['value'];
