@@ -7,4 +7,4 @@ $lytro = new Lytro\Engine(array(
     'cache_dir' => sprintf('%s/photos/cache', dirname(__FILE__))
 ));
 
-define('SAMPLE_FILENAME', 'IMG_0003-stk.lfp');
+define('SAMPLE_FILENAME', 'IMG_0012-stk.lfp');

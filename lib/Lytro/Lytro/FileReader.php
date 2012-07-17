@@ -57,7 +57,7 @@ class FileReader
         $data = rtrim(substr($data, 14 + 45 + 30));
         if ($sha1 != sha1($data) ) {
             if ($sha1 != sha1($data) ) {
-                // throw new InvalidContents(sprintf('SHA1 checksum mismatch for: %s', $sha1));
+                throw new InvalidContents(sprintf('SHA1 checksum mismatch for: %s', $sha1));
             }
         }
 
