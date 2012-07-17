@@ -54,11 +54,9 @@ class FileReader
         $data = $this->captureContents();
 
         $sha1 = trim(substr($data, 14, 40));
-        $data = rtrim(substr($data, 14 + 45 + 30));
-        if ($sha1 != sha1($data) ) {
-            if ($sha1 != sha1($data) ) {
-                throw new InvalidContents(sprintf('SHA1 checksum mismatch for: %s', $sha1));
-            }
+        $data = rtrim(substr($data, 14 + 40 + 35));
+        if ($sha1 != sha1($data)) {
+            throw new InvalidContents(sprintf('SHA1 checksum mismatch for: %s', $sha1));
         }
 
         if ($this->isValidJpeg($data)) {;
@@ -132,6 +130,10 @@ class FileReader
 
             $data .= substr($buffer, 0, 1);
         } while (!feof($this->cursor) && (fseek($this->cursor, $cursor++) === 0));
+
+        if (feof($this->cursor)) {
+            $data .= substr($buffer, 1, strlen($magic));
+        }
 
         return $data;
     }
