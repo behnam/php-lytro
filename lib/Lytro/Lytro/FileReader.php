@@ -55,12 +55,13 @@ class FileReader
 
         $sha1 = trim(substr($data, 14, 40));
         $data = rtrim(substr($data, 14 + 45 + 30));
-
         if ($sha1 != sha1($data) ) {
-            throw new InvalidContents(sprintf('SHA1 checksum mismatch for: %s', $sha1));
+            if ($sha1 != sha1($data) ) {
+                // throw new InvalidContents(sprintf('SHA1 checksum mismatch for: %s', $sha1));
+            }
         }
 
-        if ($this->isValidJpeg($data)) {
+        if ($this->isValidJpeg($data)) {;
             $this->data['images'][$sha1] = $data;
         } else {
             $this->createLookupTable($data);
